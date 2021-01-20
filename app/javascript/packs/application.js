@@ -10,7 +10,11 @@ require("channels");
 
 $("#comment_submit").on("click", (e) => {
   e.preventDefault();
-  console.log("submit");
+  // TODO: テキストボックスnameを取得する
+  // TODO: テキストエリアからcontentを取得する
+
+  // TODO: Ajax処理を書く 参考 http://semooh.jp/jquery/api/ajax/jQuery.ajax/options/
+  // TODO: リクエストに成功した場合にulにliを追加する処理を書く
 });
 
 // Uncomment to copy all static images under ../images to the output folder and reference

@@ -1,8 +1,8 @@
-class CommentsController < ApplicationController
+class CommentsController < ActionController::API
   def create
     blog = Blog.find(params[:blog_id])
-    blog.comments.create(comment_params)
-    redirect_to blog_path(blog), notice: "コメントを投稿しました"
+    comment = blog.comments.create(comment_params)
+    render json: comment
   end
 
   private
