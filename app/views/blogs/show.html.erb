@@ -1,0 +1,40 @@
+<h1><%= @blog.title %></h1>
+
+<%= simple_format(@blog.content, class: "mb-4") %>
+
+<div class="card">
+  <div class="card-header">
+    <h5>コメント(<%= @blog.comments.size %>件)</h5>
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <% if @blog.comments.blank? %>
+      <li class="list-group-item">
+        まだコメントはありません
+      </li>
+    <% else %>
+      <% @blog.comments.each do |comment| %>
+        <li class="list-group-item">
+          <p class="card-title"><%= comment.name %></p>
+          <%= simple_format(comment.content, class: "card-text") %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+
+  <%= form_with url: blog_comments_path(@blog), scope: :comment, local: true, class: "card-body" do |f| %>
+    <h5 class="card-title">コメントを投稿する</h5>
+
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :content %>
+      <%= f.text_area :content, class: "form-control" %>
+    </div>
+
+    <%= f.submit "送信", class: "btn btn-primary" %>
+  <% end %>
+</div>

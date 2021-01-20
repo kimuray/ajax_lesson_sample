@@ -1,0 +1,7 @@
+<ul class="list-group">
+  <% @blogs.each do |blog| %>
+    <li class="list-group-item">
+      <%= link_to blog.title, blog_path(blog) %>
+    </li>
+  <% end %>
+</ul>
